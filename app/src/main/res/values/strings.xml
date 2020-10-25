@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">VuIR HD2</string>
+    <string name="title_home">Home</string>
+    <string name="title_vuir">VuIR Camera</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_web">sUAS.com</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_about">About the App</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment1">Video And Control Screen</string>
+    <string name="waitingtoconnect">Connecting....</string>
+    <string name="disconnected">No Datalink</string>
+    <string name="connected">Datalink On</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="set_video_resolution">Set live video resolution:</string>
+    <string name="the_lower_the_longer_video_range">(The lower the longer video range)</string>
+    <string name="_1280x720_hd_recommended">1280x720 HD (Recommended)</string>
+    <string name="_720x576">720x576</string>
+    <string name="_352x288">352x288</string>
+    <string name="_1920x1080_full_hd">1920x1080 Full HD</string>
+    <string name="mavlink">MAVLink</string>
+    <string name="mavlink_off">MAVLink OFF</string>
+    <string name="mavlink_on">MAVLink ON</string>
+    <string name="hide">Hide</string>
+    <string name="geotagging">Geotagging</string>
+    <string name="geotagging_off">Geotagging OFF</string>
+    <string name="geotagging_on">Geotagging ON</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="product_information">Product Information</string>
+    <string name="connection_loose">Status: No Product Connected</string>
+    <string name="sdk_version">DJI SDK Version: %1$s</string>
+
+    <string name="camera_control_alpha">0.7</string>
+    <string name="seekbar_background_alpha">0.4</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="anirepeatno">6</string>
+    <string name="fromDelta">-8%p</string>
+    <string name="fromRDelta">8%p</string>
+    <string name="pan_tilt_connection">Pan Tilt Connection</string>
+    <string name="pwm_less_lag">PWM (Less lag)</string>
+    <string name="serial_newer">Serial (Newer)</string>
+    <string name="version_2_x_serial">Version 2.X+ (Serial)</string>
+    <string name="version_1_x_pwm">Version 1.X (PWM)</string>
+    <string name="vuir_gimmera_version">VuIR Gimmera Version</string>
+    <string name="video_connection">Video Connection</string>
+    <string name="tcp_stable">TCP (Stable)</string>
+    <string name="udp_quick">UDP (Quick)</string>
+    <string name="pan">Pan</string>
+    <string name="tilt">Tilt</string>
+    <string name="touch_sensitivity">Touch Sensitivity</string>
+    <string name="horizontal">Horizontal</string>
+    <string name="vertical">Vertical</string>
+    <string name="ir_media_gallery">IR Media Gallery</string>
+    <string name="loading_thermal_media">Loading thermal media…</string>
+    <string name="label_permissions">Please enable Microphone and Storage permissions.</string>
+    <string name="no_thermal_media_message">No Thermal pictures or videos found. Please try again or use the app and take real thermal pictures before returning here   Thanks!</string>
+    <string name="yes">OK</string>
+    <string name="no">Cancel</string>
+    <!--https://stackoverflow.com/questions/10862975/how-to-put-space-character-into-a-string-name-in-xml/10862999-->
+    <!--string name="ok_long">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020OK\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string-->
+    <string name="ok_long">"             "OK"             "</string>
+    <string name="snooze">Snooze 5 times</string>
+    <string name="screen_record_resolution">Screen record resolution</string>
+    <string name="about_the_app">Thanks for installing and using
+        \n
+        \n <b>VuIR Control Center App</b>
+        \n
+        \nThis App is written and maintained
+        \nby <i>Tony Ngo PhD</i>
+        \nof <b>sUAS LLC</b>  www.sUAS.com
+        \nin Maryland, USA
+        \nContact number: +1 855 303 6789
+        \n
+        \nCheck out our Social Media channels:
+        \n
+        \nYouTube: www.YouTube.com/sUAScom
+        \nFacebook: www.facebook.com/suascom
+        \nTwitter: www.twitter.com/suas_com</string>
+</resources>

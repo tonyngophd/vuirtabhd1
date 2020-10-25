@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/controlfraglayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ControlsFragment">
+
+    <RadioGroup
+        android:id="@+id/radiovisibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/radioButtonBoson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Visibility"
+            android:visibility="gone" />
+
+        <RadioButton
+            android:id="@+id/radioButtonBosonPi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Visibility"
+            android:visibility="gone" />
+
+        <RadioButton
+            android:id="@+id/radioButtonBosonPiM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Visibility"
+            android:visibility="gone" />
+
+        <RadioButton
+            android:id="@+id/radioButtonVuePro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Visibility"
+            android:visibility="gone" />
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pantiltzoomdetectionbox"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.75"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7"
+        app:layout_constraintWidth_percent="0.85">
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/multicamzoomdetectionbox"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.9"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintWidth_percent="0.15">
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <SeekBar
+        android:id="@+id/panseekBar"
+        android:layout_width="450dp"
+        android:layout_height="35dp"
+        android:alpha="@dimen/camera_control_alpha"
+        android:progress="50"
+        android:progressDrawable="@drawable/seekbar_style"
+        android:scrollbarSize="4dp"
+        android:scrollbarStyle="outsideInset"
+        android:thumb="@drawable/circle"
+        android:translationY="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageViewpanskbg"
+        android:layout_width="450dp"
+        android:layout_height="35dp"
+        android:alpha="@dimen/camera_control_alpha"
+        android:src="@drawable/panseekbarbackground"
+        android:translationY="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/panseekBar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/tiltseekbar"
+        android:layout_width="412dp"
+        android:layout_height="35dp"
+        android:alpha="@dimen/camera_control_alpha"
+        android:orientation="vertical"
+        android:progress="50"
+        android:progressDrawable="@drawable/seekbar_style"
+        android:rotation="270"
+        android:thumb="@drawable/circle"
+        android:translationX="194dp"
+        android:translationY="-40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewtiltsbbg"
+        android:layout_width="35dp"
+        android:layout_height="412dp"
+        android:alpha="@dimen/camera_control_alpha"
+        android:src="@drawable/tiltseekbarbackground"
+        android:translationX="5dp"
+        android:translationY="-40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewRecord"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_video_call_black_24dp" />
+
+    <ImageView
+        android:id="@+id/imageViewFFC"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@id/imageViewRecord"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_camera_black_48dp" />
+
+    <!--ProgressBar
+        android:id="@+id/panprogressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="500dp"
+        android:layout_height="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/panseekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/tiltprogressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="500dp"
+        android:layout_height="20dp"
+        android:rotation="270"
+        android:translationX="235dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /-->
+
+    <ImageView
+        android:id="@+id/imageViewPalette1"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/ic_palette_white_hot_48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewPalette2" />
+
+    <ImageView
+        android:id="@+id/imageViewPalette2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/ic_palette_black_hot_48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewPalette3" />
+
+    <ImageView
+        android:id="@+id/imageViewPalette3"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/ic_palette_ironbow_48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewGesture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_tablet_blue_48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/panseekBar" />
+
+    <TextView
+        android:id="@+id/textViewPTZintro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="1.0X"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.286"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.362" />
+
+    <!--android:layout_width="470dp"--><!--ImageView
+        android:id="@+id/imageViewpaletteskbg"
+        android:layout_width="260dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:adjustViewBounds="true"
+        android:alpha="0.8"
+        android:scaleType="matrix"
+        android:scaleX="0.7"
+        android:src="@drawable/bosonpalettes"
+        android:translationY="5dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/panseekBar"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewRecord"
+        app:layout_constraintWidth_max="500dp" /-->
+
+    <ImageView
+        android:id="@+id/imageViewpalettesbkg"
+        android:layout_width="470dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="0dp"
+        android:adjustViewBounds="true"
+        android:alpha="0.8"
+        android:src="@drawable/bosonpalettes"
+        android:translationY="5dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/panseekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_max="500dp" />
+
+    <SeekBar
+        android:id="@+id/paletteseekBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="450dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="0dp"
+        android:alpha="0.8"
+        android:max="9"
+        android:progress="0"
+        android:progressDrawable="@drawable/seekbar_style"
+        android:scrollbarSize="60dp"
+        android:thumb="@drawable/circle"
+        android:translationY="5dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintWidth_max="400dp" />
+
+    <ImageView
+        android:id="@+id/screenshot"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_add_a_photo_black_48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewRecord"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewRecord" />
+
+    <ImageView
+        android:id="@+id/imageViewRecordGimmera"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="52dp"
+        android:src="@drawable/ic_videocam_red_48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/screenshot" />
+
+    <ImageView
+        android:id="@+id/imageViewgainbkg"
+        android:layout_width="170dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="-8dp"
+        android:adjustViewBounds="true"
+        android:alpha="0.6"
+        android:src="@drawable/gainssmallest"
+        android:visibility="gone"
+        android:translationY="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/screenshot"
+        app:layout_constraintEnd_toStartOf="@+id/screenshot"
+        app:layout_constraintWidth_max="200dp" />
+
+    <SeekBar
+        android:id="@+id/gainseekBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="145dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="18dp"
+        android:visibility="gone"
+        android:layout_marginBottom="-8dp"
+        android:alpha="0.7"
+        android:max="2"
+        android:progress="0"
+        android:progressDrawable="@drawable/seekbar_style"
+        android:scrollbarSize="60dp"
+        android:thumb="@drawable/circle"
+        android:translationY="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/screenshot"
+        app:layout_constraintEnd_toStartOf="@+id/screenshot"
+        app:layout_constraintWidth_max="200dp"
+        tools:layout_editor_absoluteY="477dp" />
+
+
+    <!--Here we must use 640 pixels and 512 pixesl exactly, not 640dp or 512dp-->
+    <ImageView
+        android:id="@+id/screenshotbimap"
+        android:layout_width="640px"
+        android:layout_height="512px"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="PxUsage" />
+
+    <RelativeLayout
+        android:id="@+id/screenshotpreviewlayout"
+        android:layout_width="330dp"
+        android:layout_height="266dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:background="#00ffffff"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0">
+        <!--//https://acomputerengineer.wordpress.com/2016/08/18/add-border-to-relativelayout-in-android/-->
+
+        <ImageView
+            android:id="@+id/screenshotpreview"
+            android:layout_width="320dp"
+            android:layout_height="256dp"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Image Saved"
+            android:textColor="#FFFFFFFF"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,2 @@
+include ':app', ':videostreaminglibrary'
+project(':videostreaminglibrary').projectDir = new File('app/libs/videostreaminglibrary')
