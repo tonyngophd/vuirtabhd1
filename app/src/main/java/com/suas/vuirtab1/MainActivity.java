@@ -27,6 +27,7 @@ import android.view.animation.Animation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
     public static float BatteryVoltagePercent;
     public static int NumberofSats;
     public static int CPUTemp;
+    public static int CPUPercent;
     private TextView textViewConnectionFull, batterypercentagetextView;
     public static TextToSpeech myTTS;
     private ImageView openCambutton;
@@ -864,6 +866,7 @@ public class MainActivity extends AppCompatActivity {
             BatteryVoltagePercent = 0.0f;
             NumberofSats = 0;
             CPUTemp = 0;
+            CPUPercent = 0;
             ConnectionStatus = getString(R.string.disconnected);
             Log.i(TAG, "run: onProgressUpdate: values ConnectionStatus = " + ConnectionStatus);
             StatusBarFrag.UpdateStatusBar();
@@ -918,12 +921,13 @@ public class MainActivity extends AppCompatActivity {
                     CPUTemp = Integer.valueOf(message.substring(3));
                 } catch (NumberFormatException e) {
                     try {
-                        CPUTemp = Integer.valueOf(message.substring(4));
+                        CPUTemp = Integer.valueOf(message.substring(4, message.indexOf("_")));
+                        CPUPercent = Integer.valueOf(message.substring(message.indexOf("_") + 1));
                     } catch (NumberFormatException e1) {
                         Log.e(TAG, "onProgressUpdate: exception, can't read number" + message);
                     }
                 }
-                Log.d(TAG, "onProgressUpdate: CPUTemp = " + CPUTemp);
+                Log.d(TAG, "onProgressUpdate: CPUTemp = " + CPUTemp + " " + CPUPercent + "%");
                 StatusBarFrag.UpdateStatusBar();
             }
             if (message.contains("CAM")) {
@@ -978,6 +982,7 @@ public class MainActivity extends AppCompatActivity {
                     if (ControlsFragment.tiltseekBar != null) {
                         ControlsFragment.tiltseekBar.setMax(250);
                     }
+                    showHideVueProAndBosonButtons(View.GONE, View.VISIBLE);
                 } else if (message.contains("BoP")) {
                     if (irCamera == null) {
                         irCamera = new IRCamera();
@@ -1041,6 +1046,7 @@ public class MainActivity extends AppCompatActivity {
                     if (ControlsFragment.tiltseekBar != null) {
                         ControlsFragment.tiltseekBar.setMax(250);
                     }
+                    showHideVueProAndBosonButtons(View.GONE, View.VISIBLE);
                 } else if (message.contains("BPM")) {
                     if (irCamera == null) {
                         irCamera = new IRCamera();
@@ -1104,7 +1110,9 @@ public class MainActivity extends AppCompatActivity {
                     if (ControlsFragment.tiltseekBar != null) {
                         ControlsFragment.tiltseekBar.setMax(250);
                     }
+                    showHideVueProAndBosonButtons(View.GONE, View.VISIBLE);
                 } else {
+                    showHideVueProAndBosonButtons(View.VISIBLE, View.GONE);
                     if (ControlsFragment.radiovisibility != null) {
                         ControlsFragment.radiovisibility.check(R.id.radioButtonVuePro);
                     }
@@ -1192,6 +1200,14 @@ public class MainActivity extends AppCompatActivity {
                 AirGroundCom.readA2GMessage(LongerMessage, readstatus, signalValueout, PINOUT);
             }*/
         }
+    }
+
+    private void showHideVueProAndBosonButtons(int vueProVisibility, int bosonVisibility){
+        if(SettingsFragment.switchVidtoPic != null) SettingsFragment.switchVidtoPic.setVisibility(vueProVisibility);
+        if(SettingsFragment.imageViewPicmode != null) SettingsFragment.imageViewPicmode.setVisibility(vueProVisibility);
+        //if(SettingsFragment.imageViewVidmode != null) SettingsFragment.imageViewVidmode.setVisibility(vueProVisibility);
+        if(SettingsFragment.seekBarBosonVidQuality != null) SettingsFragment.seekBarBosonVidQuality.setVisibility(bosonVisibility);
+        if(SettingsFragment.seekBarBosonVidQualityText != null) SettingsFragment.seekBarBosonVidQualityText.setVisibility(bosonVisibility);
     }
 
     private static final String[] REQUIRED_PERMISSION_LIST = new String[]{

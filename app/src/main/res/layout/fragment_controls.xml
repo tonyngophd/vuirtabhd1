@@ -338,6 +338,17 @@
         app:layout_constraintWidth_max="200dp"
         tools:layout_editor_absoluteY="477dp" />
 
+    <ImageView
+        android:id="@+id/allBosonsAtOnceButton"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/ic_photo_multi_camera_black_24dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/paletteseekBar" />
+
 
     <!--Here we must use 640 pixels and 512 pixesl exactly, not 640dp or 512dp-->
     <ImageView

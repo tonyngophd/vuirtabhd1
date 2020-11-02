@@ -239,6 +239,32 @@
                 android:text="@string/serial_newer" />
 
         </RadioGroup>
+        <TextView
+            android:id="@+id/seekBarBosonVidQualityText"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="77dp"
+            android:layout_marginBottom="485dp"
+            android:visibility="gone"
+            android:text="Lighter &lt; Gim.Video Qual. &gt; Better"/>
+
+        <SeekBar
+            android:id="@+id/seekBarBosonVidQuality"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="200dp"
+            android:layout_height="33dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="97dp"
+            android:layout_marginBottom="465dp"
+            android:tooltipText="Boson Gimmera Video Quality"
+            android:min="0"
+            android:max="10"
+            android:progress="5" />
 
         <Switch
             android:id="@+id/switchVidtoPic"

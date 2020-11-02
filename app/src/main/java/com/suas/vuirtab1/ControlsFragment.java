@@ -71,6 +71,7 @@ import dji.thirdparty.v3.eventbus.EventBus;
 import static android.content.ContentValues.TAG;
 import static android.graphics.Bitmap.createBitmap;
 import static android.graphics.Bitmap.createScaledBitmap;
+import static android.graphics.Color.GRAY;
 import static android.os.SystemClock.sleep;
 import static com.suas.vuirtab1.AirGroundCom.DATE_CHANNEL;
 import static com.suas.vuirtab1.AirGroundCom.HOUR_CHANNEL;
@@ -115,6 +116,7 @@ public class ControlsFragment<onResume> extends Fragment {
     private SeekBar panseekBar;
     static SeekBar paletteseekBar;
     private SeekBar gainseekBar;
+    private ImageView allBosonsAtOnceButton;
     private ImageView imageViewpalettesbkg;
     private ImageView imageViewgainbkg;
     private int panprogress_pre = 120, tiltprogress_pre = 120;
@@ -193,6 +195,8 @@ public class ControlsFragment<onResume> extends Fragment {
     private boolean isBosonPi = false;
     private boolean isBosonPiM = false;
     private long screenrecOnOFFmillis = System.currentTimeMillis();
+    private boolean allCameraAtOnce = false;
+
 
     public ControlsFragment() {
         // Required empty public constructor
@@ -235,6 +239,7 @@ public class ControlsFragment<onResume> extends Fragment {
         panseekBar = (SeekBar) rootView.findViewById(R.id.panseekBar);
         paletteseekBar = (SeekBar) rootView.findViewById(R.id.paletteseekBar);
         gainseekBar = (SeekBar) rootView.findViewById(R.id.gainseekBar);
+        allBosonsAtOnceButton = (ImageView) rootView.findViewById(R.id.allBosonsAtOnceButton);
         PTZdetectionbox = (ConstraintLayout) rootView.findViewById(R.id.pantiltzoomdetectionbox);
         MultiCamZoomDetectionbox = (ConstraintLayout) rootView.findViewById(R.id.multicamzoomdetectionbox);
         textViewZoomScale = (TextView) rootView.findViewById(R.id.textViewPTZintro);
@@ -373,6 +378,17 @@ public class ControlsFragment<onResume> extends Fragment {
         final Handler handlerUI = new Handler();
         final int DarkRed = Color.argb(99, 255, 0, 0);
         final int DarkBlue = Color.argb(0xAA, 0x25, 0x82, 0xCE);//"#AA2582CE"
+
+        if(!allCameraAtOnce) allBosonsAtOnceButton.setColorFilter(GRAY);
+        allBosonsAtOnceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                allCameraAtOnce = !allCameraAtOnce;
+                if(!allCameraAtOnce) allBosonsAtOnceButton.setColorFilter(GRAY);
+                else allBosonsAtOnceButton.setColorFilter(DarkBlue);
+                sendG2Amessage(allCameraAtOnce?1:0, AirGroundCom.ALL_CAMS_ATONCE_CHANNEL);
+            }
+        });
         imageViewRecordGimmera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -416,7 +432,7 @@ public class ControlsFragment<onResume> extends Fragment {
                                             handlerUI.post(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    imageViewRecordGimmera.setColorFilter(Color.GRAY);
+                                                    imageViewRecordGimmera.setColorFilter(GRAY);
                                                 }
                                             });
                                         }
@@ -441,7 +457,7 @@ public class ControlsFragment<onResume> extends Fragment {
                     }*/
                     if (RECMode == 1) {
                         if (android.os.Build.VERSION.SDK_INT < 30) {
-                            imageViewRecordGimmera.setColorFilter(Color.GRAY);
+                            imageViewRecordGimmera.setColorFilter(GRAY);
                         } else {
                             handlerUI.post(new Runnable() {
                                 @Override
@@ -496,7 +512,7 @@ public class ControlsFragment<onResume> extends Fragment {
                                 handlerUI.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        int color = (screenRecBlink == 1) ? DarkRed : Color.GRAY;
+                                        int color = (screenRecBlink == 1) ? DarkRed : GRAY;
                                         imageViewRecordScreen.setColorFilter(color);
                                     }
                                 });
@@ -825,7 +841,7 @@ public class ControlsFragment<onResume> extends Fragment {
                     if (REC_Actual == 1)
                         imageViewRecordGimmera.setColorFilter(Color.RED);
                     else
-                        imageViewRecordGimmera.setColorFilter(Color.GRAY);
+                        imageViewRecordGimmera.setColorFilter(GRAY);
                 }
             } else {
                 // if REC == 0 before confirmation, the thread already stopped. So if confirmation NOT OK, it will have to start blinking again.
@@ -843,7 +859,7 @@ public class ControlsFragment<onResume> extends Fragment {
                             } else {
                                 recblink = 0;
                                 Log.i(TAG, "run: recblink = " + recblink + " imageViewRecordGimmera = " + imageViewRecordGimmera);
-                                imageViewRecordGimmera.setColorFilter(Color.GRAY);
+                                imageViewRecordGimmera.setColorFilter(GRAY);
                             }
                         } else {
                             timer.cancel();
@@ -1550,6 +1566,7 @@ public class ControlsFragment<onResume> extends Fragment {
             paletteseekBar.setVisibility(View.VISIBLE);
             imageViewpalettesbkg.setVisibility(View.VISIBLE);
             gainseekBar.setVisibility(View.VISIBLE);
+            allBosonsAtOnceButton.setVisibility(View.VISIBLE);
             imageViewgainbkg.setVisibility(View.VISIBLE);
             imageViewPalette1.setVisibility(View.GONE);
             imageViewPalette2.setVisibility(View.GONE);
@@ -1582,6 +1599,7 @@ public class ControlsFragment<onResume> extends Fragment {
             paletteseekBar.setVisibility(View.GONE);
             imageViewpalettesbkg.setVisibility(View.GONE);
             gainseekBar.setVisibility(View.GONE);
+            allBosonsAtOnceButton.setVisibility(View.GONE);
             imageViewgainbkg.setVisibility(View.GONE);
             imageViewPalette1.setVisibility(View.VISIBLE);
             imageViewPalette2.setVisibility(View.VISIBLE);

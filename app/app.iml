@@ -156,6 +156,5 @@
     <orderEntry type="library" name="Gradle: com.dji:library-anti-distortion:4.7@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.dji:library-networkrtk-helper:1.0@aar" level="project" />
     <orderEntry type="module" module-name="videostreaminglibrary" />
-    <orderEntry type="module" module-name="videostreaminglibrary" />
   </component>
 </module>

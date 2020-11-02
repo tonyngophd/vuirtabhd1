@@ -258,7 +258,10 @@ public class StatusBarFrag<onResume> extends Fragment {
             sattelitesNotextView.setText(MainActivity.NumberofSats + "");
         }
         if (cputemptextView != null) {
-            cputemptextView.setText(MainActivity.CPUTemp + "°C");
+            if(MainActivity.CPUPercent > 0)
+                cputemptextView.setText(MainActivity.CPUTemp + "°C " + MainActivity.CPUPercent + "%");
+            else
+                cputemptextView.setText(MainActivity.CPUTemp + "°C ");
         }
         if (imageViewSat != null) {
             if (MainActivity.NumberofSats < 1) {

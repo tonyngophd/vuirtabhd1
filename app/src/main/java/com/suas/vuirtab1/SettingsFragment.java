@@ -30,6 +30,7 @@ import androidx.fragment.app.Fragment;
 import java.util.Objects;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
+import static com.suas.vuirtab1.AirGroundCom.sendG2Amessage;
 import static com.suas.vuirtab1.ControlsFragment.PWM_PORT;
 import static com.suas.vuirtab1.ControlsFragment.SERIAL_PORT;
 import static com.suas.vuirtab1.ControlsFragment.SetGimmeraVersion;
@@ -81,9 +82,12 @@ public class SettingsFragment extends Fragment {
     private static int gimmeraVersion;
     private RadioButton radioButtonSerial, radioButtonPWM;
     private RadioButton radioButtonFullScreen, radioButton640, radioButton336, radioButton43;
-    private Switch switchVidtoPic;
+    static Switch switchVidtoPic;
+    static ImageView imageViewPicmode, imageViewVidmode;
+    static SeekBar seekBarBosonVidQuality;
+    static TextView seekBarBosonVidQualityText;
     boolean SwitchVid2PicChecked = false;
-    private ImageView imageViewPicmode, imageViewVidmode, recordmicImageView, voiceReminderIV;
+    private ImageView recordmicImageView, voiceReminderIV;
     private static int RECMode = 1;
     private SeekBar seekBarTiltSmoothness, seekBarPanSmoothness, seekBarHorGrid, seekBarVerGrid;
     private static int TiltSmoothness = 50, PanSmoothness = 50;
@@ -174,6 +178,8 @@ public class SettingsFragment extends Fragment {
         switchVidtoPic = (Switch) view.findViewById(R.id.switchVidtoPic);
         imageViewPicmode = (ImageView) view.findViewById(R.id.imageViewPicmode);
         imageViewVidmode = (ImageView) view.findViewById(R.id.imageViewVidmode);
+        seekBarBosonVidQuality = (SeekBar) view.findViewById(R.id.seekBarBosonVidQuality);
+        seekBarBosonVidQualityText = (TextView) view.findViewById(R.id.seekBarBosonVidQualityText);
         recordmicImageView = (ImageView) view.findViewById(R.id.recordmicImageView);
         voiceReminderIV = (ImageView) view.findViewById(R.id.voiceReminderIV);
         seekBarTiltSmoothness = (SeekBar) view.findViewById(R.id.seekBarTiltSmoothness);
@@ -185,6 +191,26 @@ public class SettingsFragment extends Fragment {
 
         RestoreUserSettings();
 
+        seekBarBosonVidQuality.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                float minQual = 20f, maxQual = 80f;
+                int progress = seekBar.getProgress();
+                int quality = (int)(progress*(maxQual-minQual)/10f + 20);
+                Log.d(TAG, "onStopTrackingTouch: video quality = " + quality);
+                sendG2Amessage(quality, AirGroundCom.GIM_VIDQUAL_CHANNEL);
+            }
+        });
         seekBarHorGrid.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {

@@ -5,14 +5,14 @@ import android.util.Log;
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class AirGroundCom {
-    public static final byte MaxMessageLength = 25;
+    private static final byte MaxMessageLength = 25;
     public static final byte GIMMODE_CHANNEL = 4;
-    public static final byte TILT_CHANNEL = 5;
-    public static final byte PAN_CHANNEL = 6;
-    public static final byte FLIR4_CHANNEL = 7;
-    public static final byte ZOOM_CHANNEL = 8;
-    public static final byte REC_CHANNEL = 9;
-    public static final byte PALETTE_CHANNEL = 10;
+    static final byte TILT_CHANNEL = 5;
+    static final byte PAN_CHANNEL = 6;
+    static final byte FLIR4_CHANNEL = 7;
+    static final byte ZOOM_CHANNEL = 8;
+    static final byte REC_CHANNEL = 9;
+    static final byte PALETTE_CHANNEL = 10;
     public static final byte IR2D_CHANNEL = 11;
     public static final byte BATTERY_MESSAGE_CHANNEL = 12;
     public static final byte GPS_MESSAGE_CHANNEL = 13;
@@ -21,15 +21,17 @@ public class AirGroundCom {
     public static final byte GPS_GLOBAL_POSITION_INFORMATION_CHANNEL = 16;
     public static final byte MAPPING_MODE_CHANNEL = 50;
     public static final byte UNIX_TIME_CHANNEL = 51;
-    public static final byte THERMAL_GAINMODE_CHANNEL = 31;
-    public static final byte PI_REC_CHANNEL = 55;
-    public static final byte YEAR_CHANNEL = 95;
-    public static final byte MONTH_CHANNEL = 96;
-    public static final byte DATE_CHANNEL = 97;
-    public static final byte HOUR_CHANNEL = 98;
-    public static final byte MINUTE_CHANNEL = 99;
-    public static final byte SECOND_CHANNEL = 100;
-    public static final byte SELECT_CAM_CHANNEL = 101;
+    static final byte THERMAL_GAINMODE_CHANNEL = 31;
+    static final byte PI_REC_CHANNEL = 55;
+    static final byte YEAR_CHANNEL = 95;
+    static final byte MONTH_CHANNEL = 96;
+    static final byte DATE_CHANNEL = 97;
+    static final byte HOUR_CHANNEL = 98;
+    static final byte MINUTE_CHANNEL = 99;
+    static final byte SECOND_CHANNEL = 100;
+    static final byte SELECT_CAM_CHANNEL = 101;
+    static final byte ALL_CAMS_ATONCE_CHANNEL = 102;
+    static final byte GIM_VIDQUAL_CHANNEL = 103;
 
     /*
     #define THERMAL_GAINMODE_CHANNEL 31
@@ -52,8 +54,8 @@ public class AirGroundCom {
 
      */
 
-    public static final boolean FAILED = false;
-    public static final boolean PASSED = true;
+    private static final boolean FAILED = false;
+    private static final boolean PASSED = true;
 
     private static String vstring(final int value) {
         if (value < 10) return "00" + value;
